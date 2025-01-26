@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  minedock:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: minedock
+    ports:
+      - "25565:25565"  # Port Minecraft
+    volumes:
+      - minecraft-data:/data  # Volume persistant pour les données
+    environment:
+      - MEMORY=8192  # Configuration de la mémoire
+    restart: unless-stopped
+
+volumes:
+  minecraft-data:
+    driver: local
