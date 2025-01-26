@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  minedock:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: minedock
+    ports:
+      - "${MINECRAFT_PORT:-25565}:${MINECRAFT_PORT:-25565}" # Définit un port par défaut
+    volumes:
+      - ./data:/data # Persistance des données du serveur
+      - ./server.properties.template:/home/minecraft/server.properties.template # Template pour la config
+    restart: unless-stopped
+    environment:
+      - VERSION=${VERSION}
+      - MEMORY=${MEMORY:-1024} # Mémoire par défaut à 1024 Mo
+      - EULA=${EULA:-false}
+      - LEVEL_SEED=${LEVEL_SEED:-}
+      - GAMEMODE=${GAMEMODE:-survival}
+      - LEVEL_NAME=${LEVEL_NAME:-world}
+      - MOTD=${MOTD:-A Minecraft Server}
+      - DIFFICULTY=${DIFFICULTY:-easy}
+      - MAX_PLAYERS=${MAX_PLAYERS:-20}
+
