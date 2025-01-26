@@ -13,13 +13,13 @@ services:
       - ./server.properties.template:/home/minecraft/server.properties.template # Template pour la config
     restart: unless-stopped
     environment:
-      - VERSION=${VERSION}
-      - MEMORY=${MEMORY:-1024} # Mémoire par défaut à 1024 Mo
+      - VERSION=${https://piston-data.mojang.com/v1/objects/4707d00eb834b446575d89a61a11b5d548d8c001/server.jar}
+      - MEMORY=${MEMORY:-8192} # Mémoire par défaut à 1024 Mo
       - EULA=${EULA:-false}
       - LEVEL_SEED=${LEVEL_SEED:-}
       - GAMEMODE=${GAMEMODE:-survival}
       - LEVEL_NAME=${LEVEL_NAME:-world}
       - MOTD=${MOTD:-A Minecraft Server}
-      - DIFFICULTY=${DIFFICULTY:-easy}
-      - MAX_PLAYERS=${MAX_PLAYERS:-20}
+      - DIFFICULTY=${DIFFICULTY:-hard}
+      - MAX_PLAYERS=${MAX_PLAYERS:-10}
 
